@@ -32,7 +32,7 @@
     (click)="togglePlay()"
     aria-label="Play"
   >
-    <i class="ti ti-player-play-filled"></i>
+    <i class="ti ti-player-play"></i>
   </button>
 
   <div class="top-bar">
@@ -62,7 +62,7 @@
           <i
             class="ti"
             [ngClass]="
-              isPlaying() ? 'ti-player-pause-filled' : 'ti-player-play-filled'
+              isPlaying() ? 'ti-player-pause' : 'ti-player-play'
             "
           ></i>
         </button>

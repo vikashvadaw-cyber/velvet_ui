@@ -6,9 +6,8 @@
       <nav class="nav-links">
         @for (menu of menus; track menu.menuId) {
           <a
-            href="#"
+            href="{{ menu.routePath }}"
             class="nav-link active"
-            (click)="navigate(menu.routePath)"
             >{{ menu.menuName }}</a
           >
         }
@@ -34,11 +33,8 @@
   </header>
 
   <section class="hero">
-    <img
-      src="https://picsum.photos/seed/velvethero/1600/900"
-      alt=""
-      class="hero-backdrop"
-    />
+    <img src="/assets/movies/Bahubali1/bahubali1.jpg" alt="Bahubali Movie Poster" class="hero-backdrop" />
+
     <div class="hero-scrim"></div>
     <button
       class="mute-btn"
@@ -49,12 +45,12 @@
     </button>
     <div class="hero-content">
       <span class="hero-tag">Velvet original</span>
-      <h1 class="hero-title">Midnight Marquee</h1>
+      <h1 class="hero-title">Bahubali - The Beginning</h1>
       <div class="hero-meta">
         <span class="badge">98% match</span>
-        <span>2026</span>
+        <span>2018</span>
         <span class="rating">16+</span>
-        <span>3 seasons</span>
+        <span>Part 1</span>
       </div>
       <p class="hero-desc">
         A film critic inherits a crumbling art-house cinema and uncovers a

@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
   }
 
   navigate(routepath: any): void {
-    this.route.navigate(['/home']);
+    this.route.navigate([routepath]);
   }
   // ...inside the class:
   featuredId = 'midnight-marquee';

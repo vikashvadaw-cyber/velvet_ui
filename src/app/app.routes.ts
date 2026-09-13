@@ -28,6 +28,27 @@ export const routes: Routes = [
           ),
       },
       {
+        path:'movies',
+        loadComponent: () =>
+          import('./features/movies/movies/movies.component').then(
+            (m) => m.MoviesComponent,
+          ),
+      },
+      {
+        path:'tvshows',
+        loadComponent: () =>
+          import('./features/tvshows/tvshows/tvshows.component').then(
+            (m) => m.TvshowsComponent,
+          ),
+      },
+      {
+        path:'mylist',
+        loadComponent: () =>
+          import('./features/mylist/mylist/mylist.component').then(
+            (m) => m.MylistComponent,
+          ),
+      },
+      {
         path: 'watch/:id',
         loadComponent: () =>
           import('./features/watch/watch/watch.component').then(

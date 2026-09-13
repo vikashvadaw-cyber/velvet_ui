@@ -7,7 +7,7 @@ import {
   signal,
   computed,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 interface VideoSource {
@@ -36,13 +36,31 @@ export class WatchComponent implements OnInit {
   // Demo catalog. Point every quality at your single file until 480p/720p/1080p encodes exist.
   movies: Movie[] = [
     {
+      id: 'bahubali1',
+      title: 'Bahubali-The Beginning',
+      qualities: [
+        { label: '1080p', src: 'assets/movies/Bahubali1/bahubali1.mp4' },
+        { label: '720p', src: 'assets/movies/Bahubali1/bahubali1.mp4' },
+        { label: '480p', src: 'assets/movies/Bahubali1/bahubali1.mp4' },
+      ], 
+    },
+    {
+      id: 'wildlife',
+      title: 'Wildlife 4K',
+      qualities: [
+        { label: '4K', src: 'assets/movies/wildlife.mp4' },
+        { label: '720p', src: 'assets/movies/wildlife/wildlife-720p.mp4' },
+        { label: '480p', src: 'assets/movies/wildlife/wildlife-480p.mp4' },
+      ], 
+    },
+    {
       id: 'barsat',
       title: 'Barsaat',
       qualities: [
         { label: '1080p', src: 'assets/movies/barsat.mp4' },
         { label: '720p', src: 'assets/movies/barsat/barsat-720p.mp4' },
         { label: '480p', src: 'assets/movies/barsat/barsat-480p.mp4' },
-      ],
+      ], 
     },
     {
       id: 'tujhko',
@@ -72,6 +90,7 @@ export class WatchComponent implements OnInit {
   showQualityMenu = signal(false);
   showSpeedMenu = signal(false);
 
+
   speedOptions = [0.5, 0.75, 1, 1.25, 1.5, 2];
 
   private hideControlsTimer: ReturnType<typeof setTimeout> | null = null;
@@ -80,6 +99,7 @@ export class WatchComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
