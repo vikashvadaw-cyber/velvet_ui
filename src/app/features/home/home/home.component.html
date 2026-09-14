@@ -5,9 +5,11 @@
 
       <nav class="nav-links">
         @for (menu of menus; track menu.menuId) {
-          <a href="{{ menu.routePath }}" class="nav-link active">{{
-            menu.menuName
-          }}</a>
+          <a
+            href="{{ menu.routePath }}"
+            class="nav-link active"
+            >{{ menu.menuName }}</a
+          >
         }
       </nav>
     </div>
@@ -31,12 +33,8 @@
   </header>
 
   <section class="hero">
-    <img
-      [src]="posterUrl(currentFeatured())"
-      alt=""
-      class="hero-backdrop"
-      [class.hero-fade]="!heroVisible()"
-    />
+    <img src="/assets/movies/Bahubali1/bahubali1.jpg" alt="Bahubali Movie Poster" class="hero-backdrop" />
+
     <div class="hero-scrim"></div>
     <button
       class="mute-btn"
@@ -45,14 +43,14 @@
     >
       <i class="ti" [ngClass]="isMuted() ? 'ti-volume-3' : 'ti-volume'"></i>
     </button>
-    <div class="hero-content" [class.hero-fade]="!heroVisible()">
+    <div class="hero-content">
       <span class="hero-tag">Velvet original</span>
-      <h1 class="hero-title">{{ currentFeatured().title }}</h1>
+      <h1 class="hero-title">Bahubali - The Beginning</h1>
       <div class="hero-meta">
         <span class="badge">98% match</span>
-        <span>2026</span>
+        <span>2018</span>
         <span class="rating">16+</span>
-        <span>3 seasons</span>
+        <span>Part 1</span>
       </div>
       <p class="hero-desc">
         A film critic inherits a crumbling art-house cinema and uncovers a
@@ -60,7 +58,7 @@
       </p>
       <div class="hero-actions">
         <button class="btn-primary" (click)="playFeatured()">
-          <i class="ti ti-player-play"></i> Play
+          <i class="ti ti-player-play-filled"></i> Play
         </button>
         <button class="btn-ghost">
           <i class="ti ti-info-circle"></i> More info
@@ -89,9 +87,14 @@
             (keyup.enter)="play(item)"
             *ngFor="let item of row.items"
           >
-            <img [src]="posterUrl(item)" [alt]="item.title" />
+            <img
+              [src]="'https://picsum.photos/seed/' + item.seed + '/300/450'"
+              [alt]="item.title"
+            />
             <div class="poster-overlay">
-              <span class="poster-play"><i class="ti ti-player-play"></i></span>
+              <span class="poster-play"
+                ><i class="ti ti-player-play-filled"></i
+              ></span>
               <span class="poster-title">{{ item.title }}</span>
             </div>
             <div class="progress-bar" *ngIf="item.progress as p">

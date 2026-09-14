@@ -401,13 +401,6 @@
   right: 0;
   background: linear-gradient(270deg, var(--color-bg), transparent);
 }
-.hero-backdrop,
-.hero-content {
-  transition: opacity 0.4s ease;
-}
-.hero-fade {
-  opacity: 0;
-}
 
 @media (max-width: 768px) {
   .navbar {

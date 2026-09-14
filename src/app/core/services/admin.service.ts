@@ -14,7 +14,4 @@ export class AdminService {
   GetMenus(): Observable<any> {
     return this.http.get<any>(`${this.apiurl}/GetMenus`);
   }
-  GetMovies(): Observable<any[]> {
-    return this.http.get<any>(`${this.apiurl}/GetMovies`);
-  }
 }
