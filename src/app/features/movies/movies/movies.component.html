@@ -1,1 +1,124 @@
-<p>movies works!</p>
+<div class="page">
+  <header class="navbar" [class.scrolled]="isScrolled()">
+    <div class="nav-left">
+      <span class="wordmark">Velvet</span>
+
+      <nav class="nav-links">
+        @for (menu of menus; track menu.menuId) {
+          <a href="{{ menu.routePath }}" class="nav-link active">{{
+            menu.menuName
+          }}</a>
+        }
+      </nav>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" aria-label="Search">
+        <i class="ti ti-search"></i>
+      </button>
+      <button class="icon-btn" aria-label="Notifications">
+        <i class="ti ti-bell"></i>
+      </button>
+      <div class="profile" (click)="toggleProfileMenu()">
+        <div class="avatar">{{ profileletter }}</div>
+        <i class="ti ti-chevron-down"></i>
+        <div class="profile-menu" *ngIf="showProfileMenu()">
+          <a href="#">Profile</a>
+          <a href="#">Account settings</a>
+          <a href="#" (click)="logout()">Sign out</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <img
+      [src]="posterUrl(currentFeatured())"
+      [alt]=""
+      class="hero-backdrop"
+      [class.hero-fade]="!heroVisible()"
+    />
+
+    <div class="hero-scrim"></div>
+
+    <button
+      class="mute-btn"
+      (click)="toggleMute()"
+      [attr.aria-label]="isMuted() ? 'Unmute' : 'Mute'"
+    >
+      <i class="ti" [ngClass]="isMuted() ? 'ti-volume-3' : 'ti-volume'"></i>
+    </button>
+
+    <div class="hero-content" [class.hero-fade]="!heroVisible()">
+      <span class="hero-tag">Velvet original</span>
+
+      <h1 class="hero-title">
+        {{ currentFeatured().title }}
+      </h1>
+
+      <div class="hero-meta">
+        <span class="badge">98% match</span>
+        <span>2026</span>
+        <span class="rating">16+</span>
+        <span>3 seasons</span>
+      </div>
+
+      <p class="hero-desc">
+        A film critic inherits a crumbling art-house cinema and uncovers a
+        decades-old mystery hidden in its projection room.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-primary" (click)="playFeatured()">
+          <i class="ti ti-player-play"></i>
+          Play
+        </button>
+
+        <button class="btn-ghost">
+          <i class="ti ti-info-circle"></i>
+          More info
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <main class="rows">
+    <section class="row" *ngFor="let row of rows">
+      <h2 class="row-title">{{ row.title }}</h2>
+      <div class="row-wrap">
+        <button
+          class="row-nav prev"
+          (click)="scrollRow(track, -1)"
+          aria-label="Scroll left"
+        >
+          <i class="ti ti-chevron-left"></i>
+        </button>
+        <div class="row-track" #track>
+          <div
+            class="poster-card"
+            role="button"
+            tabindex="0"
+            (click)="play(item)"
+            (keyup.enter)="play(item)"
+            *ngFor="let item of row.items"
+          >
+            <img [src]="posterUrl(item)" [alt]="item.title" />
+            <div class="poster-overlay">
+              <span class="poster-play"><i class="ti ti-player-play"></i></span>
+              <span class="poster-title">{{ item.title }}</span>
+            </div>
+            <div class="progress-bar" *ngIf="item.progress as p">
+              <div class="progress-fill" [style.width.%]="p"></div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="row-nav next"
+          (click)="scrollRow(track, 1)"
+          aria-label="Scroll right"
+        >
+          <i class="ti ti-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+  </main>
+</div>
